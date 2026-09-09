@@ -1,0 +1,19 @@
+{
+  "n_attack": 8,
+  "n_benign": 8,
+  "A_direct": {
+    "wall_s": 60.3,
+    "prod_tokens": 28123,
+    "p50_latency_s": 2.95
+  },
+  "B_honeyroute": {
+    "wall_s": 69.6,
+    "prod_tokens": 2686,
+    "honeypot_tokens": 18349,
+    "diverted": 12,
+    "total": 16,
+    "p50_latency_s": 3.07
+  },
+  "prod_token_reduction": 0.9045,
+  "diversion_rate": 0.75
+}

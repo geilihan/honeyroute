@@ -1,0 +1,11 @@
+{
+  "experiment": "attack_side_loop",
+  "before": {
+    "n": 83,
+    "detected": 83,
+    "detection_rate": 1.0,
+    "n_miss": 0
+  },
+  "status": "insufficient_misses",
+  "note": "current heads already cover the camouflage family; no retrain needed (fail-closed positive result)"
+}

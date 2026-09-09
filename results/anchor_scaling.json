@@ -1,0 +1,99 @@
+{
+  "experiment": "anchor_scaling_curve",
+  "design": "query = 30 held-out campaigns x 5 rotated variants; database = N pool anchors + the 30 query-campaign anchors; fusion-cosine retrieval",
+  "n_pool_available": 120,
+  "curve": {
+    "anchors=30": {
+      "db_size": 60,
+      "mean_top1": 0.3533,
+      "mean_top5": 0.62,
+      "chance_top1": 0.0167,
+      "trials": [
+        {
+          "top1": 0.36,
+          "top5": 0.6067,
+          "chance": 0.0167
+        },
+        {
+          "top1": 0.3467,
+          "top5": 0.6333,
+          "chance": 0.0167
+        },
+        {
+          "top1": 0.3533,
+          "top5": 0.62,
+          "chance": 0.0167
+        }
+      ]
+    },
+    "anchors=50": {
+      "db_size": 80,
+      "mean_top1": 0.3422,
+      "mean_top5": 0.58,
+      "chance_top1": 0.0125,
+      "trials": [
+        {
+          "top1": 0.36,
+          "top5": 0.58,
+          "chance": 0.0125
+        },
+        {
+          "top1": 0.3333,
+          "top5": 0.5867,
+          "chance": 0.0125
+        },
+        {
+          "top1": 0.3333,
+          "top5": 0.5733,
+          "chance": 0.0125
+        }
+      ]
+    },
+    "anchors=80": {
+      "db_size": 110,
+      "mean_top1": 0.2778,
+      "mean_top5": 0.5333,
+      "chance_top1": 0.0091,
+      "trials": [
+        {
+          "top1": 0.2867,
+          "top5": 0.5333,
+          "chance": 0.0091
+        },
+        {
+          "top1": 0.2733,
+          "top5": 0.52,
+          "chance": 0.0091
+        },
+        {
+          "top1": 0.2733,
+          "top5": 0.5467,
+          "chance": 0.0091
+        }
+      ]
+    },
+    "anchors=120": {
+      "db_size": 150,
+      "mean_top1": 0.2533,
+      "mean_top5": 0.48,
+      "chance_top1": 0.0067,
+      "trials": [
+        {
+          "top1": 0.2533,
+          "top5": 0.48,
+          "chance": 0.0067
+        },
+        {
+          "top1": 0.2533,
+          "top5": 0.48,
+          "chance": 0.0067
+        },
+        {
+          "top1": 0.2533,
+          "top5": 0.48,
+          "chance": 0.0067
+        }
+      ]
+    }
+  }
+}

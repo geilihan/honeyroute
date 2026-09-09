@@ -1,0 +1,45 @@
+{
+  "experiment": "E4_attribution_embed",
+  "n_campaigns": 20,
+  "k_rotations": 5,
+  "dim": 1024,
+  "fingerprint": "frozen NSFA-0.8B last-token embedding (API-observable router feature)",
+  "results": {
+    "tau=0.3": {
+      "group_precision": 0.0,
+      "full_campaign_recall": 1.0,
+      "pairwise_precision": 0.042,
+      "pairwise_recall": 1.0
+    },
+    "tau=0.4": {
+      "group_precision": 0.0,
+      "full_campaign_recall": 1.0,
+      "pairwise_precision": 0.042,
+      "pairwise_recall": 1.0
+    },
+    "tau=0.5": {
+      "group_precision": 0.0,
+      "full_campaign_recall": 1.0,
+      "pairwise_precision": 0.042,
+      "pairwise_recall": 1.0
+    },
+    "tau=0.6": {
+      "group_precision": 0.0,
+      "full_campaign_recall": 1.0,
+      "pairwise_precision": 0.042,
+      "pairwise_recall": 1.0
+    },
+    "tau=0.7": {
+      "group_precision": 0.0,
+      "full_campaign_recall": 1.0,
+      "pairwise_precision": 0.042,
+      "pairwise_recall": 1.0
+    },
+    "tau=0.8": {
+      "group_precision": 0.0,
+      "full_campaign_recall": 1.0,
+      "pairwise_precision": 0.042,
+      "pairwise_recall": 1.0
+    }
+  }
+}

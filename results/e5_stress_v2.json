@@ -1,0 +1,21 @@
+{
+  "A_direct": {
+    "wall_s": 598.7,
+    "prod_tokens": 429904,
+    "hp_tokens": 0,
+    "diverted": 0,
+    "benign_p50_s": 22.3,
+    "benign_p99_s": 38.33
+  },
+  "B_honeyroute": {
+    "wall_s": 608.3,
+    "prod_tokens": 10830,
+    "hp_tokens": 303279,
+    "diverted": 193,
+    "benign_p50_s": 23.32,
+    "benign_p99_s": 52.17
+  },
+  "experiment": "E5_stress_v2",
+  "n_requests": 200,
+  "prod_token_reduction": 0.9748
+}

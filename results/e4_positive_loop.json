@@ -1,0 +1,26 @@
+{
+  "experiment": "E4_positive_loop",
+  "family": "novel GLM-5.3-generated compliance jailbreaks (unseen)",
+  "n_train_attacks": 40,
+  "n_test_attacks": 20,
+  "n_benign_controls": 40,
+  "v0_cold_start": {
+    "family_recall": 1.0,
+    "benign_fpr_on_family_test": 0.925
+  },
+  "v1_with_new_head": {
+    "family_recall": 1.0,
+    "benign_fpr_on_family_test": 0.925
+  },
+  "head_threshold": 0.3,
+  "pooled_original_domains_before": {
+    "P": 0.9032,
+    "R": 0.918,
+    "F1": 0.9106
+  },
+  "pooled_original_domains_after": {
+    "P": 0.6512,
+    "R": 0.918,
+    "F1": 0.7619
+  }
+}

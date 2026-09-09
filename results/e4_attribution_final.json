@@ -1,0 +1,20 @@
+{
+  "experiment": "E4_attribution_embed_calibrated",
+  "n_calib_campaigns": 20,
+  "n_test_campaigns": 30,
+  "k_rotations": 5,
+  "dim": 1024,
+  "tau_selected_on_calib": 0.05,
+  "test_metrics": {
+    "pairwise_precision": 0.1022,
+    "pairwise_recall": 0.2889,
+    "pairwise_f1": 0.151
+  },
+  "recall_by_rotation_k": {
+    "k=1": 0.3667,
+    "k=2": 0.5333,
+    "k=3": 0.4,
+    "k=4": 0.4,
+    "k=5": 0.2667
+  }
+}

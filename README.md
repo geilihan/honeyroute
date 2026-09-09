@@ -1,0 +1,88 @@
+# HoneyRoute — Experiment Code and Results
+
+Code and result data for **"HoneyRoute: Honeypot-Model Routing for
+Adversarial LLM Serving"** ([arXiv:2609.08306](https://arxiv.org/abs/2609.08306)).
+
+HoneyRoute is an inference-serving security layer that routes a frozen
+risk-router's flagged requests away from the production LLM to a
+honeypot model, preserving analyst-visible traceability while cutting
+production token consumption under attack.
+
+## Layout
+
+- `scripts/` — all experiment scripts (E1–E7 + attribution, playbooks,
+  judge-replication, adversarial-evasion runs), runnable as-is against a
+  deployed HoneyRoute gate
+- `results/` — the result JSONs reported in the paper (verbatim copies
+  of the experiment outputs)
+- `figures/` — the paper's data figures (F–T frontier, E7 trend,
+  anchor-scaling) as PDFs
+
+## Experiment → script → result map
+
+| Paper block | Script(s) | Result JSON |
+|---|---|---|
+| E1 detection + baselines | `honeyroute_run_e1.py`, `honeyroute_run_e1b.py` | `e1_detection.json`, `e1_baselines.json` |
+| E1 L1+L2 cascade | `honeyroute_run_e1casc.py` | `e1_cascade.json` |
+| E2 fidelity (teacher judge) | `honeyroute_run_e2.py`, `honeyroute_run_e2v2.py` | `e2_faithfulness.json`, `e2_faithfulness_v2.json` |
+| E2 fidelity, second judge | `run_e2_judge2.py`, `run_e2_judge2_par.py`, `run_cross_judge.py` | `e2_cross_judge*.json` |
+| E2b selective hpC | `honeyroute_run_e2b.py`, `run_e2b_judge2.py` | `e2b_selective_hpc.json` |
+| E3 cost/latency | (within E1/E6 runs) | `e1_detection.json`, `e6_stress_v3_real.json` |
+| E4 attribution (pairwise) | `honeyroute_run_e4.py`, `honeyroute_run_e4b.py`, `honeyroute_run_e4c.py` | `e4_attribution*.json` |
+| E4 positive loop | `honeyroute_run_e4loop.py`, `honeyroute_run_e4loop2.py`, `honeyroute_run_e4loop3.py`, `honeyroute_run_e4p.py`, `run_loop_gen0.py`, `run_loop_gen1.py` | `e4_positive_loop*.json`, `e4_pooled_generations.json`, `loop_*.json` |
+| E5 ablation / absorption / stress | `honeyroute_run_e5.py`, `honeyroute_run_e5fix.py`, `honeyroute_run_e5stress.py` | `e5_*.json` |
+| E6 real-payload floods | `honeyroute_run_e6.py`, `honeyroute_run_e6v2.py` | `e6_stress_v3_real.json`, `e6_ft_frontier.json` |
+| E6 attribution retrieval + fusion | `honeyroute_run_attrv2.py`, `honeyroute_run_attrv3.py`, `honeyroute_run_attrv4.py`, `run_anchor_scale.py` | `attribution_*_v*.json`, `anchor_scaling.json` |
+| E7 multi-turn soft escalation | `honeyroute_run_mt.py` | `multiturn_soft_escalation.json` |
+| E7 human playbooks (Crescendo etc.) | `run_crescendo.py`, `run_playbooks_v2.py` | `crescendo_replay.json`, `playbooks_v2_replay.json` |
+| E7 online trend rule | (analysis of E7 margins) | `online_trend_rule.json` |
+| E7 adversarial evasion | `run_e7_adv.py`, `run_gate_evade.py` | `e7_adv_*.json` |
+| Distribution shift | `run_dist_shift.py` | `cross_distribution.json` |
+
+Attack corpora: `results/jbb_attacks_uniq.json` (496 unique
+JailbreakBench prompts), `results/crescendo_playbooks.json` (verbatim
+Crescendo turns from PyRIT), `results/e7_adv_scripts.json` and
+`results/loop_*` (generated adversarial/loop-training scripts).
+Files named `*_partial.json` are incremental saves from long-running
+experiments (kept for completeness; the corresponding final JSON is
+authoritative). Additional per-experiment outputs (`e4_attribution*.json`,
+`e2_judge2*.json`, `e2b_judge2*.json`, `e5_*.json`, `cross_judge.json`,
+`legit_sec_research_fpr.json`, `mt_trend_analysis.json`,
+`gate_evasion*.json`, `e7_adversarial.json`) are intermediate or
+replication runs referenced in the paper's appendix.
+
+## Reproduction
+
+The scripts expect a deployed HoneyRoute stack (see paper §4 Setup):
+
+- **Gate** at `http://127.0.0.1:8002` — `/gate`, `/gate/full`
+  (with `session_id` for the session-risk tracker)
+- **Production model** and **replica** served via vLLM
+- **Teacher judge** — an OpenAI-compatible chat endpoint
+
+Configure endpoints and paths via environment variables:
+
+```bash
+export GUARD_CODE_DIR=/path/to/gate/code        # pipeline/ package
+export HONEYROUTE_OUT=/path/to/output/dir       # result JSONs
+export BACKBONE_DIR=/path/to/frozen/backbone    # 0.8B router backbone
+export SEEDS_DIR=/path/to/seed/corpora         # attack-seed data
+export TEACHER_GATEWAY_URL=https://host/v1/chat/completions
+export TEACHER_API_KEY=...
+```
+
+Then run any experiment with `python scripts/<script>.py`.
+
+## Notes
+
+- Internal deployment identifiers, trace URLs, model names, and API
+  endpoints have been anonymized/redacted.
+- The gate's frozen backbone and trained heads are described in the
+  paper; the router training pipeline is not part of this release.
+- Results are raw experiment outputs; percentages in the paper are
+  derived from these files.
+
+## License
+
+MIT (code and figures). Result JSONs derived from JailbreakBench
+artifacts follow their respective licenses.

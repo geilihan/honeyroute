@@ -1,0 +1,36 @@
+{
+  "experiment": "E1_baselines",
+  "n": 103,
+  "positive": 61,
+  "heuristic_only": {
+    "P": 0.8462,
+    "R": 0.1803,
+    "F1": 0.2973,
+    "tp": 11,
+    "fp": 2,
+    "fn": 50,
+    "tn": 40,
+    "latency_ms_p50": 0.1
+  },
+  "guard_llm_8b": {
+    "P": 1.0,
+    "R": 1.0,
+    "F1": 1.0,
+    "tp": 61,
+    "fp": 0,
+    "fn": 0,
+    "tn": 42,
+    "latency_ms_p50": 14817.9,
+    "latency_ms_mean": 14952.4
+  },
+  "ours_nsfa_router": {
+    "P": 0.9032,
+    "R": 0.918,
+    "F1": 0.9106,
+    "tp": 56,
+    "fp": 6,
+    "fn": 5,
+    "tn": 36,
+    "latency_ms_p50": 37.8
+  }
+}

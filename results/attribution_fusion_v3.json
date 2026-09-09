@@ -1,0 +1,25 @@
+{
+  "experiment": "attribution_fusion_v3_supervised",
+  "method": "logistic regression over per-view cosines [embed, stylometry, riskprobs], trained on 20 calib campaigns, threshold by calib F1",
+  "n_calib": 20,
+  "n_test": 30,
+  "lr_coefs": [
+    1.5675,
+    0.25,
+    0.91
+  ],
+  "tau": 0.6772,
+  "pairwise": {
+    "P": 0.0948,
+    "R": 0.5511,
+    "F1": 0.1618
+  },
+  "recall_by_k": {
+    "k=1": 0.5667,
+    "k=2": 0.6667,
+    "k=3": 0.6333,
+    "k=4": 0.7,
+    "k=5": 0.6333
+  },
+  "anchor_retrieval_top1": 0.4933
+}

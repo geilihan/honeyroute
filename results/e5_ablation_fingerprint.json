@@ -1,0 +1,19 @@
+{
+  "experiment": "E5_ablation_fingerprint",
+  "embed": {
+    "tau_calibrated": 0.05,
+    "test": {
+      "P": 0.1022,
+      "R": 0.2889,
+      "F1": 0.151
+    }
+  },
+  "surface": {
+    "tau_calibrated": 0.45,
+    "test": {
+      "P": 0.0314,
+      "R": 0.3289,
+      "F1": 0.0573
+    }
+  }
+}

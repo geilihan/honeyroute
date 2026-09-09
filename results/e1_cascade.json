@@ -1,0 +1,18 @@
+{
+  "experiment": "E1_cascade_baseline",
+  "n": 103,
+  "cascade_L1L2": {
+    "P": 1.0,
+    "R": 0.9016,
+    "F1": 0.9483,
+    "l2_invocation_rate": 0.5631,
+    "p50_total_latency_s": 14.63,
+    "p99_total_latency_s": 30.55
+  },
+  "ours_L1_only": {
+    "P": 0.9032,
+    "R": 0.918,
+    "F1": 0.9106,
+    "p50_latency_s": 0.038
+  }
+}

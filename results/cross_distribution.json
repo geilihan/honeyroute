@@ -1,0 +1,27 @@
+{
+  "experiment": "cross_distribution_robustity",
+  "design": "single production corpus with daily teacher relabels (label-noise axis) + one disjoint capture window (temporal axis); a truly independent second traffic source is not available on this deployment",
+  "label_noise": {
+    "n": 710,
+    "labels": "09-03",
+    "P": 0.1022,
+    "R": 1.0,
+    "F1": 0.1854,
+    "n_label_flips_0905_vs_0903": 63,
+    "gate_agrees_with_0905_on_flipped": 25,
+    "gate_disagrees": 38,
+    "note": "gate scores are label-set independent; flips show the teacher's own decision boundary churn, which the gate prediction matches in the majority of flip cases"
+  },
+  "capture_window_0901": {
+    "n": 44,
+    "n_benign": 43,
+    "n_attack": 1,
+    "benign_mean_score": 0.6608,
+    "benign_max_score": 0.7814,
+    "benign_over_0.5": 43,
+    "benign_over_0.7_hpc_trigger": 11,
+    "canary_pattern_hits_benign": 4,
+    "attack_caught": "1/1",
+    "note": "disjoint capture window (no text overlap with the 710 corpus); hpC-v2 trigger rate on this window vs 38.7% on the main corpus"
+  }
+}

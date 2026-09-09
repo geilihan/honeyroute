@@ -1,0 +1,21 @@
+{
+  "experiment": "E4_positive_loop_v3_fp_correction",
+  "finding": "legit security-research questions misrouted at 30% FPR",
+  "test_set": "30 held-out legit security questions",
+  "train_set": "37 fresh legit + 40 attack seeds",
+  "v0_legit_fpr": 0.3,
+  "v1_legit_fpr": 0.0333,
+  "attack_recall_v0": 1.0,
+  "attack_recall_v1": 1.0,
+  "pooled_before": {
+    "P": 0.9032,
+    "R": 0.918,
+    "F1": 0.9106
+  },
+  "pooled_after": {
+    "P": 0.9492,
+    "R": 0.918,
+    "F1": 0.9333
+  },
+  "correction_threshold": 0.9
+}

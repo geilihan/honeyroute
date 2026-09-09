@@ -1,0 +1,9 @@
+{
+  "experiment": "E6_FT_frontier_T_axis",
+  "n_probes": 12,
+  "T_hpT_canary_echo_rate": 1.0,
+  "T_hpC_signal_rate": 1.0,
+  "F_hpT": 0.9655,
+  "F_hpC": 0.7826,
+  "note": "T = per-interaction distinguishable trap/signal rate under fingerprinting probes"
+}

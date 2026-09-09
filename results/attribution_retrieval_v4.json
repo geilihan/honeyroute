@@ -1,0 +1,50 @@
+{
+  "experiment": "attribution_retrieval_v4",
+  "task": "given a transformed variant (k=1..5 rotations), retrieve its source campaign among 30 anchors",
+  "n_calib": 20,
+  "n_test": 30,
+  "n_variants": 150,
+  "lr_coefs": [
+    1.5675,
+    0.25,
+    0.91
+  ],
+  "results": {
+    "embed_cos": {
+      "top1": 0.4867,
+      "top5": 0.7667,
+      "chance_top1": 0.0333,
+      "top1_by_k": {
+        "k=1": 0.5333,
+        "k=2": 0.5333,
+        "k=3": 0.4333,
+        "k=4": 0.4,
+        "k=5": 0.5333
+      }
+    },
+    "fusion_cos": {
+      "top1": 0.5667,
+      "top5": 0.8067,
+      "chance_top1": 0.0333,
+      "top1_by_k": {
+        "k=1": 0.4333,
+        "k=2": 0.5667,
+        "k=3": 0.6333,
+        "k=4": 0.5667,
+        "k=5": 0.6333
+      }
+    },
+    "supervised": {
+      "top1": 0.4933,
+      "top5": 0.7733,
+      "chance_top1": 0.0333,
+      "top1_by_k": {
+        "k=1": 0.4,
+        "k=2": 0.5,
+        "k=3": 0.5333,
+        "k=4": 0.4667,
+        "k=5": 0.5667
+      }
+    }
+  }
+}

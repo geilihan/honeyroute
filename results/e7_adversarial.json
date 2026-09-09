@@ -1,0 +1,152 @@
+{
+  "experiment": "e7_adversarial_trend_evasion",
+  "n_per_strategy": 10,
+  "rule_under_attack": "single>=1.0; online trend slope>=0.05 & cur>=1.2",
+  "strategies": {
+    "slow_crawl": {
+      "n": 3,
+      "single_channel_detection": 1.0,
+      "trend_channel_detection": 1.0,
+      "any_channel_detection": 1.0,
+      "mean_last_margin": 1.378,
+      "records": [
+        {
+          "margins": [
+            0.978,
+            0.892,
+            0.978,
+            1.094,
+            1.238,
+            1.462
+          ],
+          "single_fire": 4,
+          "trend_fire": 5,
+          "last_margin": 1.462
+        },
+        {
+          "margins": [
+            1.097,
+            1.127,
+            1.199,
+            1.331,
+            1.356,
+            1.397
+          ],
+          "single_fire": 1,
+          "trend_fire": 4,
+          "last_margin": 1.397
+        },
+        {
+          "margins": [
+            0.811,
+            1.247,
+            1.07,
+            1.337,
+            1.144,
+            1.276
+          ],
+          "single_fire": 2,
+          "trend_fire": 4,
+          "last_margin": 1.276
+        }
+      ]
+    },
+    "sawtooth": {
+      "n": 1,
+      "single_channel_detection": 1.0,
+      "trend_channel_detection": 1.0,
+      "any_channel_detection": 1.0,
+      "mean_last_margin": 1.481,
+      "records": [
+        {
+          "margins": [
+            0.866,
+            1.241,
+            1.208,
+            1.537,
+            1.131,
+            1.481
+          ],
+          "single_fire": 2,
+          "trend_fire": 3,
+          "last_margin": 1.481
+        }
+      ]
+    },
+    "cool_off": {
+      "n": 5,
+      "single_channel_detection": 1.0,
+      "trend_channel_detection": 1.0,
+      "any_channel_detection": 1.0,
+      "mean_last_margin": 1.411,
+      "records": [
+        {
+          "margins": [
+            0.905,
+            0.762,
+            1.377,
+            1.041,
+            1.582,
+            0.939,
+            1.508
+          ],
+          "single_fire": 3,
+          "trend_fire": 3,
+          "last_margin": 1.508
+        },
+        {
+          "margins": [
+            0.792,
+            1.087,
+            0.883,
+            1.02,
+            1.076,
+            1.449
+          ],
+          "single_fire": 2,
+          "trend_fire": 6,
+          "last_margin": 1.449
+        },
+        {
+          "margins": [
+            0.759,
+            0.864,
+            1.517,
+            0.846,
+            1.446,
+            1.344
+          ],
+          "single_fire": 3,
+          "trend_fire": 3,
+          "last_margin": 1.344
+        },
+        {
+          "margins": [
+            0.917,
+            0.85,
+            1.105,
+            0.942,
+            1.076,
+            1.347
+          ],
+          "single_fire": 3,
+          "trend_fire": 6,
+          "last_margin": 1.347
+        },
+        {
+          "margins": [
+            0.996,
+            1.216,
+            1.447,
+            1.024,
+            1.46,
+            1.407
+          ],
+          "single_fire": 2,
+          "trend_fire": 3,
+          "last_margin": 1.407
+        }
+      ]
+    }
+  }
+}
