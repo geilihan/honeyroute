@@ -1,6 +1,6 @@
 {
-  "n": 52,
-  "pass": 52,
+  "n": 69,
+  "pass": 69,
   "fail": 0,
   "skip": 0,
   "checks": [
@@ -56,6 +56,24 @@
       "check": "E1 expanded JBB n=250",
       "actual": 250,
       "expected": 250,
+      "status": "PASS"
+    },
+    {
+      "check": "E1 LG4 small-set F1=.939",
+      "actual": 0.9391,
+      "expected": 0.9391,
+      "status": "PASS"
+    },
+    {
+      "check": "E1 ShieldGemma pooled F1=.711",
+      "actual": 0.7111,
+      "expected": 0.7111,
+      "status": "PASS"
+    },
+    {
+      "check": "E1 LG4 expanded F1=.944",
+      "actual": 0.9437,
+      "expected": 0.9437,
       "status": "PASS"
     },
     {
@@ -314,6 +332,90 @@
       "check": "O7 thr.7 ext recall=.970",
       "actual": 0.97,
       "expected": 0.97,
+      "status": "PASS"
+    },
+    {
+      "check": "E6 linkage P=.102",
+      "actual": 0.1022,
+      "expected": 0.1022,
+      "status": "PASS"
+    },
+    {
+      "check": "E6 linkage R=.289",
+      "actual": 0.2889,
+      "expected": 0.2889,
+      "status": "PASS"
+    },
+    {
+      "check": "E5/E6 linkage F1=.151",
+      "actual": 0.151,
+      "expected": 0.151,
+      "status": "PASS"
+    },
+    {
+      "check": "E6 embed retrieval top-1=.487",
+      "actual": 0.4867,
+      "expected": 0.4867,
+      "status": "PASS"
+    },
+    {
+      "check": "E6 fusion top-1=.567",
+      "actual": 0.5667,
+      "expected": 0.5667,
+      "status": "PASS"
+    },
+    {
+      "check": "E6 fusion top-5=.807",
+      "actual": 0.8067,
+      "expected": 0.8067,
+      "status": "PASS"
+    },
+    {
+      "check": "E6 supervised linker top-1=.493",
+      "actual": 0.4933,
+      "expected": 0.4933,
+      "status": "PASS"
+    },
+    {
+      "check": "E6 anchor 60 top-1=.35",
+      "actual": 0.3533,
+      "expected": 0.3533,
+      "status": "PASS"
+    },
+    {
+      "check": "E6 anchor 150 top-1=.25",
+      "actual": 0.2533,
+      "expected": 0.2533,
+      "status": "PASS"
+    },
+    {
+      "check": "E5 embed linkage F1=.151",
+      "actual": 0.151,
+      "expected": 0.151,
+      "status": "PASS"
+    },
+    {
+      "check": "E5 surface linkage F1=.057",
+      "actual": 0.0573,
+      "expected": 0.0573,
+      "status": "PASS"
+    },
+    {
+      "check": "E5 surface P=.031",
+      "actual": 0.0314,
+      "expected": 0.0314,
+      "status": "PASS"
+    },
+    {
+      "check": "E5 surface R=.329",
+      "actual": 0.3289,
+      "expected": 0.3289,
+      "status": "PASS"
+    },
+    {
+      "check": "E2b 2nd-window trigger=25.6%",
+      "actual": 0.2558139534883721,
+      "expected": 0.2558,
       "status": "PASS"
     }
   ]

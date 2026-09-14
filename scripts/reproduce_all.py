@@ -70,6 +70,17 @@ def main():
         sum(1 for r in load("e1_expanded_eval_v2.json")["records"] if r["label"] == 1), 600, 0)
     chk("E1 expanded JBB n=250",
         sum(1 for r in load("e1_expanded_eval_v2.json")["records"] if r["src"] == "jbb"), 250, 0)
+    chk("E1 LG4 small-set F1=.939", get("e1_llamaguard4_baseline.json", "pooled/F1"), 0.9391, 1e-3)
+    chk("E1 ShieldGemma pooled F1=.711", get("e1_shieldgemma_baseline.json", "pooled/F1"), 0.7111, 1e-3)
+    chk("E1 LG4 expanded F1=.944", get("e1_expanded_eval_v2.json", "results/LG4/pooled/F1"), 0.9437, 1e-3)
+    chk("E1 cascade L2 invocation=.56", get("e1_cascade.json", "cascade_L1L2/l2_invocation_rate"), 0.5631, 1e-3)
+    _recs = [r for r in (load("e1_expanded_eval_v2.json") or {}).get("records", []) if r.get("label") == 1]
+    _l1m = sum(1 for r in _recs if int(r.get("l1_pred", 1)) == 0)
+    _lg4m = sum(1 for r in _recs if int(r.get("lg4_pred", 1)) == 0)
+    _ov = sum(1 for r in _recs if int(r.get("l1_pred", 1)) == 0 and int(r.get("lg4_pred", 1)) == 0)
+    chk("E1 router misses=12", _l1m, 12, 0)
+    chk("E1 LG4 misses=47", _lg4m, 47, 0)
+    chk("E1 miss overlap=8", _ov, 8, 0)
 
     # ---------- W1: Chinese calibration ----------
     chk("W1 tau_zh=0.5779", get("e1_zh_calibration.json", "primary_split/tau_zh_chosen"), 0.5779, 1e-4)
@@ -84,6 +95,11 @@ def main():
     chk("E2 hpC kappa=.021", get("e2_judge_robustness.json", "per_honeypot/hpC/order_cohens_kappa"), 0.021, 1e-3)
     chk("E2 hpC cross-family kappa=.24", get("e2_judge_robustness.json", "cross_family/hpC/cohens_kappa"), 0.2356, 5e-3)
 
+    chk("E2 hpT raw F=.930 (264/284)", get("e2_faithfulness_v2.json", "F_hpT"), 0.9296, 1e-3)
+    chk("E2 hpT n_valid=284", get("e2_faithfulness_v2.json", "n_valid_hpT"), 284, 0)
+    chk("E2 hpC raw F=.076 (19/249)", get("e2_faithfulness_v2.json", "F_hpC"), 0.0763, 1e-3)
+    chk("E2 hpC n_valid=249", get("e2_faithfulness_v2.json", "n_valid_hpC"), 249, 0)
+    chk("E2b selective n_valid=252", get("e2b_selective_hpc.json", "n_valid"), 252, 0)
     # ---------- E2b: selective bait / threshold recipe (W7) ----------
     chk("E2b selective F_hpC=.889", get("e2b_selective_hpc.json", "F_hpC_v2"), 0.8889, 1e-3)
     chk("E2b benign trigger=.387", get("e2b_selective_hpc.json", "trigger_rate_benign"), 0.3867, 1e-3)
@@ -101,6 +117,7 @@ def main():
     chk("E6 token reduction=97.8%", (1 - hr / dt) if (dt and hr) else None, 0.9783, 1e-3)
     chk("E6 token saving=46x", (dt / hr) if (dt and hr) else None, 46.1, 0.5)
     chk("E6 flood diversion=1.0", get("e6_stress_v3_real.json", "B_honeyroute/diversion_by_family/gcg_flood"), 1.0, 0)
+    chk("E6 benign diverted=93", get("e6_stress_v3_real.json", "B_honeyroute/benign_diverted"), 93, 0)
 
     # ---------- E4: continuous-analysis loop ----------
     chk("E4 legit FPR .30->.033", get("e4_positive_loop_v3.json", "v1_legit_fpr"), 0.0333, 1e-3)
@@ -138,6 +155,27 @@ def main():
     cur = {round(c["thr"], 2): c for c in (get("o7_operating_point.json", "curve") or [])}
     chk("O7 thr.7 ext FP=.053", (cur.get(0.7) or {}).get("benign_FP"), 0.053, 5e-3)
     chk("O7 thr.7 ext recall=.970", (cur.get(0.7) or {}).get("attack_recall"), 0.970, 5e-3)
+
+    # ---------- E5 / E6: attribution linkage & retrieval ----------
+    chk("E6 linkage P=.102", get("e4_attribution_final.json", "test_metrics/pairwise_precision"), 0.1022, 1e-3)
+    chk("E6 linkage R=.289", get("e4_attribution_final.json", "test_metrics/pairwise_recall"), 0.2889, 1e-3)
+    chk("E5/E6 linkage F1=.151", get("e4_attribution_final.json", "test_metrics/pairwise_f1"), 0.151, 1e-3)
+    chk("E6 embed retrieval top-1=.487", get("attribution_retrieval_v4.json", "results/embed_cos/top1"), 0.4867, 1e-3)
+    chk("E6 fusion top-1=.567", get("attribution_retrieval_v4.json", "results/fusion_cos/top1"), 0.5667, 1e-3)
+    chk("E6 fusion top-5=.807", get("attribution_retrieval_v4.json", "results/fusion_cos/top5"), 0.8067, 1e-3)
+    chk("E6 supervised linker top-1=.493", get("attribution_retrieval_v4.json", "results/supervised/top1"), 0.4933, 1e-3)
+    chk("E6 anchor 60 top-1=.35", get("anchor_scaling.json", "curve/anchors=30/mean_top1"), 0.3533, 1e-3)
+    chk("E6 anchor 150 top-1=.25", get("anchor_scaling.json", "curve/anchors=120/mean_top1"), 0.2533, 1e-3)
+    # ---------- E5: fingerprint ablation (embedding vs surface features) ----------
+    chk("E5 embed linkage F1=.151", get("e5_ablation_fingerprint.json", "embed/test/F1"), 0.151, 1e-3)
+    chk("E5 surface linkage F1=.057", get("e5_ablation_fingerprint.json", "surface/test/F1"), 0.0573, 5e-4)
+    chk("E5 surface P=.031", get("e5_ablation_fingerprint.json", "surface/test/P"), 0.0314, 5e-4)
+    chk("E5 surface R=.329", get("e5_ablation_fingerprint.json", "surface/test/R"), 0.3289, 5e-4)
+
+    # ---------- E2b: second capture window ----------
+    _w = (load("cross_distribution.json") or {}).get("capture_window_0901", {})
+    chk("E2b 2nd-window trigger=25.6%",
+        (_w.get("benign_over_0.7_hpc_trigger", 0) / _w.get("n_benign", 1)) if _w else None, 0.2558, 2e-3)
 
     # ---------- report ----------
     npass = nfail = nskip = 0

@@ -145,5 +145,6 @@
       "FN_attack": 0.004
     },
     "note": "Applying the paper's own per-deployment recalibration recipe to the external distributions closes most of the gap: choosing the threshold on a local benign sample brings external benign FP to <=10% while external attack detection stays high --- the O7 gap is a calibration gap, not a capability gap."
-  }
+  },
+  "seed": 7
 }

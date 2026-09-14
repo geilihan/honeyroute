@@ -60,5 +60,6 @@
       "attack_recall": 0.9533
     }
   },
-  "note": "The raw max_risk score separates the external benign from the attack distribution at AUC≈0.99, so the O7 gap is a *threshold* problem, not a capability one: no new head or features help. Calibrating the diversion threshold on a small local benign sample (E2b/W7 recipe) closes it --- at thr 0.7 the external benign FP falls to ~7% at ~97% recall. The 0.5 threshold is the E1 detection operating point, not a deployment default."
+  "note": "The raw max_risk score separates the external benign from the attack distribution at AUC≈0.99, so the O7 gap is a *threshold* problem, not a capability one: no new head or features help. Calibrating the diversion threshold on a small local benign sample (E2b/W7 recipe) closes it --- at thr 0.7 the external benign FP falls to ~7% at ~97% recall. The 0.5 threshold is the E1 detection operating point, not a deployment default.",
+  "seed": 3
 }
