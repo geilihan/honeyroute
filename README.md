@@ -44,6 +44,7 @@ production token consumption under attack.
 | E7 rule-aware evasion | `run_b4_evasion.py` | `e7_evasion_robustness.json`, `b4_evasion_summary.json` |
 | E1 zh benign calibration (W1) | `run_zh_calibration.py`, `dedup_e1_set.py` | `e1_zh_calibration.json` (calibrated branch also in `e1_expanded_eval_v2.json`) |
 | E7 adaptive API-black-box evasion (W2) | `run_b4_adaptive.py` | `e7_evasion_adaptive.json` |
+| Attacker-cost frontier (O1) | `agg_attacker_cost.py`, `plot_attacker_cost.py` | `attacker_cost_frontier.json` |
 | E2 judge-order robustness (W6) | `run_e2_judge_robustness.py` | `e2_judge_robustness.json` |
 | E2b per-deployment threshold recipe (W7) | `run_e2b_threshold_recipe.py` | `e2b_threshold_recipe.json`, `e2b_benign_gate_scores.json` |
 | E1 black-box threshold estimation (W3a) | `run_w3_threshold_estimation.py` | `e1_threshold_estimation.json` |

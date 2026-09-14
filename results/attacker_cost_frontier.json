@@ -1,0 +1,62 @@
+{
+  "experiment": "attacker_cost_frontier",
+  "description": "Evasion rate as a function of attacker capability and cost, aggregated from the released adversarial-probing result JSONs. The frontier's finding: across every API-visible level (L1/L2a/L2b/L2c) evasion stays <3%, while the only level that succeeds is L3 (white-box), which is measured but not defended and whose perturbation is not realisable as text.",
+  "levels": [
+    {
+      "level": "L1",
+      "capability": "API, decision-only, scripted pacing (no score feedback)",
+      "source": "e7_evasion_robustness.json",
+      "n": 43,
+      "detection": 0.9767,
+      "evasion": 0.0233,
+      "cost_queries": null
+    },
+    {
+      "level": "L2a",
+      "capability": "API, 0/1 (PASS/DIVERT) feedback, boundary estimation",
+      "source": "e1_threshold_estimation.json",
+      "n": 40,
+      "detection": 1.0,
+      "evasion": 0.0,
+      "cost_queries": 9.0,
+      "boundary_harmful_fraction": 0.0083
+    },
+    {
+      "level": "L2b",
+      "capability": "API, score feedback, single-turn rewrite search",
+      "source": "gate_evasion.json",
+      "n": 40,
+      "detection": 0.975,
+      "evasion": 0.025,
+      "cost_queries": 20
+    },
+    {
+      "level": "L2c",
+      "capability": "API, score feedback, multi-turn session search (teacher-generated rewrites)",
+      "source": "e7_evasion_adaptive.json",
+      "n": 36,
+      "detection": 0.9722,
+      "evasion": 0.0278,
+      "cost_queries": 171.3,
+      "upper_bound": true
+    },
+    {
+      "level": "L3",
+      "capability": "white-box gradients through the publicly released backbone (embedding-space PGD)",
+      "source": "e1_whitebox_probe.json",
+      "n": 40,
+      "detection": 0.0,
+      "evasion": 1.0,
+      "cost_queries": null,
+      "l2_budget_full_break": 0.2,
+      "mean_min_eps": 0.139,
+      "baseline_max_risk": 0.8537,
+      "text_realisable": false
+    }
+  ],
+  "summary": {
+    "max_evasion_api_only": 0.0278,
+    "only_successful_level": "L3",
+    "successful_level_text_realisable": false
+  }
+}
