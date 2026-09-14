@@ -32,7 +32,7 @@ _OPENER = urllib.request.build_opener(urllib.request.ProxyHandler({}))
 random.seed(20260914)
 OUT = os.environ.get("W2_OUT", os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "_results"))
 TEACHER = os.environ.get("TEACHER_GATEWAY_URL",
-                         "https://sec-llm-gateway-prod.nioint.com/v1/chat/completions")
+                         "https://<teacher-gateway>/v1/chat/completions")
 KEY = os.environ.get("TEACHER_API_KEY", "")
 TEACHERS = [m.strip() for m in os.environ.get("W2_TEACHERS", "glmf,Qwen3.8-Flash").split(",") if m.strip()]
 GATE = os.environ.get("W2_GATE", "http://127.0.0.1:8002/gate")
