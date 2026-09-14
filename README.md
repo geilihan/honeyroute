@@ -42,6 +42,7 @@ production token consumption under attack.
 | E1 expanded set + eval (1,103 samples) | `gen_e1_expanded.py`, `build_b2_set.py`, `run_e1_expanded_eval.py` | `e1_expanded_set_v2.json`, `e1_expanded_eval_v2.json` |
 | E7 expanded (held-out splits) | `gen_e7_scripts.py`, `run_e7_expanded.py` | `e7_expanded_scripts.json`, `e7_expanded_eval.json`, `e7_expanded_final.json` |
 | E7 rule-aware evasion | `run_b4_evasion.py` | `e7_evasion_robustness.json`, `b4_evasion_summary.json` |
+| E1 zh benign calibration (W1) | `run_zh_calibration.py`, `dedup_e1_set.py` | `e1_zh_calibration.json` (calibrated branch also in `e1_expanded_eval_v2.json`) |
 
 Attack corpora: `results/jbb_attacks_uniq.json` (496 unique
 JailbreakBench prompts), `results/crescendo_playbooks.json` (verbatim
