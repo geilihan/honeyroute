@@ -44,6 +44,7 @@ production token consumption under attack.
 | E7 rule-aware evasion | `run_b4_evasion.py` | `e7_evasion_robustness.json`, `b4_evasion_summary.json` |
 | E1 zh benign calibration (W1) | `run_zh_calibration.py`, `dedup_e1_set.py` | `e1_zh_calibration.json` (calibrated branch also in `e1_expanded_eval_v2.json`) |
 | E7 adaptive API-black-box evasion (W2) | `run_b4_adaptive.py` | `e7_evasion_adaptive.json` |
+| E2 judge-order robustness (W6) | `run_e2_judge_robustness.py` | `e2_judge_robustness.json` |
 
 Attack corpora: `results/jbb_attacks_uniq.json` (496 unique
 JailbreakBench prompts), `results/crescendo_playbooks.json` (verbatim

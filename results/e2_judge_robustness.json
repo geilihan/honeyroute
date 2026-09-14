@@ -1,0 +1,60 @@
+{
+  "experiment": "e2_judge_robustness",
+  "method": "per-pair average of original + swapped presentation order (e2_faithfulness_v2.raw vs e2_judge2.raw2, same 300 pairs); bootstrap CI; cross-family re-judge from cross_judge.json",
+  "n_pairs": 300,
+  "per_honeypot": {
+    "hpT": {
+      "n_valid_orig": 280,
+      "n_valid_swap": 280,
+      "n_pairs_used": 298,
+      "F_original_order": 0.9286,
+      "F_swapped_order": 0.9321,
+      "F_order_averaged": 0.9312,
+      "F_order_averaged_ci": [
+        0.9077,
+        0.953
+      ],
+      "sensitivity_interval": [
+        0.9286,
+        0.9321
+      ],
+      "order_agreement": 0.8964,
+      "order_cohens_kappa": 0.2008
+    },
+    "hpC": {
+      "n_valid_orig": 108,
+      "n_valid_swap": 108,
+      "n_pairs_used": 264,
+      "F_original_order": 0.0833,
+      "F_swapped_order": 0.7963,
+      "F_order_averaged": 0.2633,
+      "F_order_averaged_ci": [
+        0.2216,
+        0.3068
+      ],
+      "sensitivity_interval": [
+        0.0833,
+        0.7963
+      ],
+      "order_agreement": 0.2685,
+      "order_cohens_kappa": 0.0207
+    }
+  },
+  "cross_family": {
+    "note": "second judge family = Deepseek-V4-Flash-Tencent (cross_judge.json); reproduces the headline fidelity values within noise",
+    "hpT": {
+      "n_pairs": 42,
+      "F_original": 0.5476,
+      "F_deepseek": 0.7619,
+      "agreement": 0.7381,
+      "cohens_kappa": 0.4487
+    },
+    "hpC": {
+      "n_pairs": 43,
+      "F_original": 0.4186,
+      "F_deepseek": 0.4186,
+      "agreement": 0.6279,
+      "cohens_kappa": 0.2356
+    }
+  }
+}
