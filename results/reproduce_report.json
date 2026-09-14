@@ -1,0 +1,320 @@
+{
+  "n": 52,
+  "pass": 52,
+  "fail": 0,
+  "skip": 0,
+  "checks": [
+    {
+      "check": "E1 small-set F1=.911",
+      "actual": 0.9106,
+      "expected": 0.9106,
+      "status": "PASS"
+    },
+    {
+      "check": "E1 small-set P=.903",
+      "actual": 0.9032,
+      "expected": 0.9032,
+      "status": "PASS"
+    },
+    {
+      "check": "E1 small-set R=.918",
+      "actual": 0.918,
+      "expected": 0.918,
+      "status": "PASS"
+    },
+    {
+      "check": "E1 L1 p50=38ms",
+      "actual": 0.038,
+      "expected": 0.038,
+      "status": "PASS"
+    },
+    {
+      "check": "E1 cascade F1=.948",
+      "actual": 0.9483,
+      "expected": 0.9483,
+      "status": "PASS"
+    },
+    {
+      "check": "E1 cascade p50=14.6s",
+      "actual": 14.63,
+      "expected": 14.63,
+      "status": "PASS"
+    },
+    {
+      "check": "E1 expanded benign n=503",
+      "actual": 503,
+      "expected": 503,
+      "status": "PASS"
+    },
+    {
+      "check": "E1 expanded attack n=600",
+      "actual": 600,
+      "expected": 600,
+      "status": "PASS"
+    },
+    {
+      "check": "E1 expanded JBB n=250",
+      "actual": 250,
+      "expected": 250,
+      "status": "PASS"
+    },
+    {
+      "check": "W1 tau_zh=0.5779",
+      "actual": 0.5779,
+      "expected": 0.5779,
+      "status": "PASS"
+    },
+    {
+      "check": "W1 full-slice zh FP=14",
+      "actual": 14,
+      "expected": 14,
+      "status": "PASS"
+    },
+    {
+      "check": "W1 pooled F1=.913",
+      "actual": 0.913,
+      "expected": 0.913,
+      "status": "PASS"
+    },
+    {
+      "check": "W1 200-split FP mean=3.475",
+      "actual": 3.475,
+      "expected": 3.475,
+      "status": "PASS"
+    },
+    {
+      "check": "W1 200-split FN mean=0.86",
+      "actual": 0.86,
+      "expected": 0.86,
+      "status": "PASS"
+    },
+    {
+      "check": "E2 hpT order-avg F=.931",
+      "actual": 0.9312,
+      "expected": 0.931,
+      "status": "PASS"
+    },
+    {
+      "check": "E2 hpC order-avg F=.263",
+      "actual": 0.2633,
+      "expected": 0.263,
+      "status": "PASS"
+    },
+    {
+      "check": "E2 hpC kappa=.021",
+      "actual": 0.0207,
+      "expected": 0.021,
+      "status": "PASS"
+    },
+    {
+      "check": "E2 hpC cross-family kappa=.24",
+      "actual": 0.2356,
+      "expected": 0.2356,
+      "status": "PASS"
+    },
+    {
+      "check": "E2b selective F_hpC=.889",
+      "actual": 0.8889,
+      "expected": 0.8889,
+      "status": "PASS"
+    },
+    {
+      "check": "E2b benign trigger=.387",
+      "actual": 0.3867,
+      "expected": 0.3867,
+      "status": "PASS"
+    },
+    {
+      "check": "E2b thr.85 FP=.0033",
+      "actual": 0.0033,
+      "expected": 0.0033,
+      "status": "PASS"
+    },
+    {
+      "check": "E2b thr.85 FN=.3767",
+      "actual": 0.3767,
+      "expected": 0.3767,
+      "status": "PASS"
+    },
+    {
+      "check": "E2b thr.6 FP=.75",
+      "actual": 0.75,
+      "expected": 0.75,
+      "status": "PASS"
+    },
+    {
+      "check": "E2b thr.6 FN=.0567",
+      "actual": 0.0567,
+      "expected": 0.0567,
+      "status": "PASS"
+    },
+    {
+      "check": "E6 direct prod tokens=708077",
+      "actual": 708077,
+      "expected": 708077,
+      "status": "PASS"
+    },
+    {
+      "check": "E6 honeyroute prod tokens=15351",
+      "actual": 15351,
+      "expected": 15351,
+      "status": "PASS"
+    },
+    {
+      "check": "E6 token reduction=97.8%",
+      "actual": 0.9783201544464797,
+      "expected": 0.9783,
+      "status": "PASS"
+    },
+    {
+      "check": "E6 token saving=46x",
+      "actual": 46.12578985082405,
+      "expected": 46.1,
+      "status": "PASS"
+    },
+    {
+      "check": "E6 flood diversion=1.0",
+      "actual": 1.0,
+      "expected": 1.0,
+      "status": "PASS"
+    },
+    {
+      "check": "E4 legit FPR .30->.033",
+      "actual": 0.0333,
+      "expected": 0.0333,
+      "status": "PASS"
+    },
+    {
+      "check": "E4 pooled F1 .911->.933",
+      "actual": 0.9333,
+      "expected": 0.9333,
+      "status": "PASS"
+    },
+    {
+      "check": "E7 held-out detection=1.0",
+      "actual": 1.0,
+      "expected": 1.0,
+      "status": "PASS"
+    },
+    {
+      "check": "E7 held-out fire turn=2.8",
+      "actual": 2.8,
+      "expected": 2.8,
+      "status": "PASS"
+    },
+    {
+      "check": "E7 held-out benign FP=.08",
+      "actual": 0.08,
+      "expected": 0.08,
+      "status": "PASS"
+    },
+    {
+      "check": "E7 scripted evasion 42/43=.977",
+      "actual": 0.9767441860465116,
+      "expected": 0.9767,
+      "status": "PASS"
+    },
+    {
+      "check": "W2 adaptive evasion 1/36=.0278",
+      "actual": 0.0278,
+      "expected": 0.0278,
+      "status": "PASS"
+    },
+    {
+      "check": "O2 v2 valid detection=1.0",
+      "actual": 1.0,
+      "expected": 1.0,
+      "status": "PASS"
+    },
+    {
+      "check": "O2 v2 rotation evasion=0",
+      "actual": 0.0,
+      "expected": 0.0,
+      "status": "PASS"
+    },
+    {
+      "check": "W3a intent-preserving evasion=0/40",
+      "actual": 0,
+      "expected": 0,
+      "status": "PASS"
+    },
+    {
+      "check": "W3a queries to localise~9",
+      "actual": 9.0,
+      "expected": 9.0,
+      "status": "PASS"
+    },
+    {
+      "check": "W3b eps.2 breaks 100%",
+      "actual": 1.0,
+      "expected": 1.0,
+      "status": "PASS"
+    },
+    {
+      "check": "W3b baseline max_risk=.85",
+      "actual": 0.8537,
+      "expected": 0.85,
+      "status": "PASS"
+    },
+    {
+      "check": "W4 extraction min acc=99.17%",
+      "actual": 0.9917,
+      "expected": 0.9917,
+      "status": "PASS"
+    },
+    {
+      "check": "O1 frontier levels=7",
+      "actual": 7,
+      "expected": 7,
+      "status": "PASS"
+    },
+    {
+      "check": "O1 max API-only evasion=.0278",
+      "actual": 0.0278,
+      "expected": 0.0278,
+      "status": "PASS"
+    },
+    {
+      "check": "O2 published baseline detection=.996",
+      "actual": 0.996,
+      "expected": 0.996,
+      "status": "PASS"
+    },
+    {
+      "check": "O7 external attack detection=.996",
+      "actual": 0.996,
+      "expected": 0.996,
+      "status": "PASS"
+    },
+    {
+      "check": "O7 external benign flagged@.5=.73",
+      "actual": 0.73,
+      "expected": 0.73,
+      "status": "PASS"
+    },
+    {
+      "check": "O7 in-distribution flagged@.5=.2565",
+      "actual": 0.2565,
+      "expected": 0.2565,
+      "status": "PASS"
+    },
+    {
+      "check": "O7 max_risk AUC=0.994",
+      "actual": 0.9942,
+      "expected": 0.9942,
+      "status": "PASS"
+    },
+    {
+      "check": "O7 thr.7 ext FP=.053",
+      "actual": 0.0533,
+      "expected": 0.053,
+      "status": "PASS"
+    },
+    {
+      "check": "O7 thr.7 ext recall=.970",
+      "actual": 0.97,
+      "expected": 0.97,
+      "status": "PASS"
+    }
+  ]
+}

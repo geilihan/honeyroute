@@ -50,6 +50,7 @@ production token consumption under attack.
 | External-corpus generalization: dolly-15k benign + JBB attacks (O7) | `run_o7_external_generalization.py` | `o7_external_generalization.json` |
 | External-corpus recalibration curve (O7 ext) | `run_o7_external_calibration.py` | `o7_external_generalization.json` (recalibration_curve) |
 | External operating point / AUC (O7 ext) | `run_o7_operating_point.py` | `o7_operating_point.json` |
+| One-command offline reproduction (all paper numbers) | `reproduce_all.py` | `reproduce_report.json` |
 | E2 judge-order robustness (W6) | `run_e2_judge_robustness.py` | `e2_judge_robustness.json` |
 | E2b per-deployment threshold recipe (W7) | `run_e2b_threshold_recipe.py` | `e2b_threshold_recipe.json`, `e2b_benign_gate_scores.json` |
 | E1 black-box threshold estimation (W3a) | `run_w3_threshold_estimation.py` | `e1_threshold_estimation.json` |
