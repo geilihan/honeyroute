@@ -1,0 +1,36 @@
+{
+  "experiment": "e6_extraction_probe",
+  "method": "budget-limited behavioural distinguishability M(:8011) vs hpT(:8012); pure-python TF-IDF + logistic-regression discriminator, 5-fold CV",
+  "scope": "LOWER BOUND on extraction difficulty (a full distillation surrogate is not trained here); low CV accuracy at low Q => a behavioural clone needs more queries => divert is not a cheaper extraction target",
+  "n_inputs": 120,
+  "curve": [
+    {
+      "query_budget": 15,
+      "n_responses": 30,
+      "cv_accuracy": 1.0,
+      "chance": 0.5
+    },
+    {
+      "query_budget": 30,
+      "n_responses": 60,
+      "cv_accuracy": 1.0,
+      "chance": 0.5
+    },
+    {
+      "query_budget": 60,
+      "n_responses": 120,
+      "cv_accuracy": 0.9917,
+      "chance": 0.5
+    },
+    {
+      "query_budget": 120,
+      "n_responses": 240,
+      "cv_accuracy": 0.9958,
+      "chance": 0.5
+    }
+  ],
+  "min_accuracy": 0.9917,
+  "max_accuracy": 1.0,
+  "max_margin_over_chance": 0.5,
+  "note": "production M and the trained honeypot hpT are distinguishable with >=99% accuracy from only 15 queries, i.e. diverting does not hide the honeypot from a budget-limited behavioural probe and any extraction surrogate can be validated cheaply; reported as a LOWER BOUND on extraction cost (no distillation surrogate is trained)."
+}
