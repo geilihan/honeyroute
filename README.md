@@ -48,6 +48,7 @@ production token consumption under attack.
 | E2b per-deployment threshold recipe (W7) | `run_e2b_threshold_recipe.py` | `e2b_threshold_recipe.json`, `e2b_benign_gate_scores.json` |
 | E1 black-box threshold estimation (W3a) | `run_w3_threshold_estimation.py` | `e1_threshold_estimation.json` |
 | E6 budget-limited extraction probe (W4) | `run_e6_extraction_probe.py` | `e6_extraction_probe.json` |
+| E1 white-box gradient probe (W3b) | `run_e1_whitebox_probe.py` | `e1_whitebox_probe.json` |
 
 Attack corpora: `results/jbb_attacks_uniq.json` (496 unique
 JailbreakBench prompts), `results/crescendo_playbooks.json` (verbatim
