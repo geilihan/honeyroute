@@ -45,7 +45,7 @@ random.seed(20260914)
 OUT = os.environ.get("HONEYROUTE_OUT", "/datagroup/guard/eval/honeyroute")
 TEACHER = os.environ.get("TEACHER_GATEWAY_URL",
                          "https://sec-llm-gateway-prod.nioint.com/v1/chat/completions")
-KEY = os.environ.get("TEACHER_API_KEY", "***REMOVED-TEACHER-KEY***")
+KEY = os.environ.get("TEACHER_API_KEY", "")
 MODEL = os.environ.get("TEACHER_MODEL", "glmf")
 GATE = os.environ.get("W2_GATE", "http://127.0.0.1:8002/gate")
 N_SEEDS = int(os.environ.get("W2_N", "45"))       # seeds total (spread over 3 strategies)

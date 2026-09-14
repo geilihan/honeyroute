@@ -2,7 +2,7 @@
   "experiment": "e1_strong_baseline",
   "baseline": "JailbreakBench artifacts (GCG-optimised suffixes / PAIR / manual jailbreaks)",
   "citation": "chao2024jailbreakbench, zou2023universal",
-  "gate": "http://10.129.165.127:8002/gate",
+  "gate": "REDACTED_DEPLOYMENT_GATE",
   "fire_margin": 1.2,
   "n": 250,
   "evasion_rate": 0.004,

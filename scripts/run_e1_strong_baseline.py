@@ -62,7 +62,7 @@ def main():
         "experiment": "e1_strong_baseline",
         "baseline": "JailbreakBench artifacts (GCG-optimised suffixes / PAIR / manual jailbreaks)",
         "citation": "chao2024jailbreakbench, zou2023universal",
-        "gate": GATE,
+        "gate": "REDACTED_DEPLOYMENT_GATE",
         "fire_margin": FIRE,
         "n": n,
         "evasion_rate": round(evaded / n, 4) if n else None,
