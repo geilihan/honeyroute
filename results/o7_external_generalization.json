@@ -1,0 +1,28 @@
+{
+  "experiment": "o7_external_generalization",
+  "gate": "REDACTED_DEPLOYMENT_GATE",
+  "benign_corpus": "databricks-dolly-15k (public, English instructions)",
+  "n_benign": 300,
+  "benign_diversion_rate": 0.1433,
+  "benign_diversion_ci": [
+    0.1082,
+    0.1875
+  ],
+  "benign_flagged_at_0.5": 0.73,
+  "benign_flagged_ci": [
+    0.6771,
+    0.7771
+  ],
+  "mean_benign_margin": 1.0196,
+  "attack_corpus": "JailbreakBench artifacts (GCG/PAIR/manual)",
+  "n_attack": 250,
+  "attack_detection_rate": 0.996,
+  "attack_detection_ci": [
+    0.9777,
+    0.9993
+  ],
+  "note": "Two independent, public distributions reproduce the routing conclusion: external benign instructions are diverted at 14.3% and public jailbreaks are detected at 99.6%. A fully independent production deployment is not available -> stated as a single-deployment limitation. External benign instructions over-flag at 0.5 (73.0%) far above the in-distribution benign rate (25.7%): the router over-scores terse instruction-style questions, consistent with the paper's 'instruction-style benign over-scores' caveat and motivating the per-deployment recalibration recipe.",
+  "in_distribution_benign_flagged_at_0.5": 0.2565,
+  "in_distribution_n_benign": 503,
+  "oods_gap_flagged_at_0.5": 0.4735
+}
