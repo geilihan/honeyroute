@@ -114,6 +114,41 @@ def main():
     except Exception as exc:  # pragma: no cover
         print("L2c skipped:", exc)
 
+    # ---- L2d: multi-teacher + cross-session/account rotation (W2 v2) ----
+    try:
+        w2b = load("e7_evasion_adaptive_v2.json")
+        ab = w2b.get("aggregate", {})
+        det = float(ab.get("single_adaptive_detection", 1.0))
+        levels.append({
+            "level": "L2d",
+            "capability": "API, score feedback, multi-teacher + cross-session / account rotation",
+            "source": "e7_evasion_adaptive_v2.json",
+            "n": ab.get("n_valid", 0),
+            "detection": ab.get("single_adaptive_detection"),
+            "evasion": round(1 - det, 4),
+            "session_rotation_evasion": ab.get("session_rotation_evasion"),
+            "cost_queries": ab.get("mean_query_budget"),
+            "note": "n_valid=%s of %s (teacher refusals excluded as defanged)" % (
+                ab.get("n_valid"), ab.get("n_total")),
+        })
+    except Exception as exc:  # pragma: no cover
+        print("L2d skipped:", exc)
+
+    # ---- PUB: published JailbreakBench artifacts applied directly (O2 baseline) ----
+    try:
+        sb = load("e1_strong_baseline.json")
+        levels.append({
+            "level": "PUB",
+            "capability": "published JailbreakBench artifacts (GCG / PAIR / manual) applied directly",
+            "source": "e1_strong_baseline.json",
+            "n": sb.get("n", 0),
+            "detection": sb.get("detection_rate"),
+            "evasion": sb.get("evasion_rate"),
+            "cost_queries": 1,
+        })
+    except Exception as exc:  # pragma: no cover
+        print("PUB skipped:", exc)
+
     # ---- L3: white-box gradients (W3b) ----
     try:
         w3b = load("e1_whitebox_probe.json")

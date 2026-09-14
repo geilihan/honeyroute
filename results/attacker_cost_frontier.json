@@ -41,6 +41,29 @@
       "upper_bound": true
     },
     {
+      "level": "L2d",
+      "capability": "API, score feedback, multi-teacher + cross-session / account rotation",
+      "source": "e7_evasion_adaptive_v2.json",
+      "n": 10,
+      "detection": 1.0,
+      "evasion": 0.0,
+      "session_rotation_evasion": {
+        "2": 0.0,
+        "3": 0.0
+      },
+      "cost_queries": 85.2,
+      "note": "n_valid=10 of 24 (teacher refusals excluded as defanged)"
+    },
+    {
+      "level": "PUB",
+      "capability": "published JailbreakBench artifacts (GCG / PAIR / manual) applied directly",
+      "source": "e1_strong_baseline.json",
+      "n": 250,
+      "detection": 0.996,
+      "evasion": 0.004,
+      "cost_queries": 1
+    },
+    {
       "level": "L3",
       "capability": "white-box gradients through the publicly released backbone (embedding-space PGD)",
       "source": "e1_whitebox_probe.json",
