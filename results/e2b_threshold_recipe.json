@@ -1,0 +1,102 @@
+{
+  "experiment": "e2b_threshold_recipe",
+  "method": "portable threshold calibration: from N local benign samples, sweep the gate-score threshold and read the FP/FN cost curve; validate the magnitude on a disjoint capture window",
+  "n_benign_local": 300,
+  "n_attack_proxy": 600,
+  "attack_proxy": "e1_expanded_eval_v2 attacks l1_risk (same router)",
+  "deployed_operating_point": {
+    "thr": 0.7,
+    "FP_benign": 0.2233,
+    "TPR": 0.8917,
+    "FN": 0.1083,
+    "note": "hpC selective-bait trigger threshold"
+  },
+  "cost_curve": [
+    {
+      "thr": 0.5,
+      "FP_benign": 0.9567,
+      "TPR": 0.98,
+      "FN": 0.02
+    },
+    {
+      "thr": 0.55,
+      "FP_benign": 0.8867,
+      "TPR": 0.9633,
+      "FN": 0.0367
+    },
+    {
+      "thr": 0.6,
+      "FP_benign": 0.75,
+      "TPR": 0.9433,
+      "FN": 0.0567
+    },
+    {
+      "thr": 0.65,
+      "FP_benign": 0.3767,
+      "TPR": 0.915,
+      "FN": 0.085
+    },
+    {
+      "thr": 0.7,
+      "FP_benign": 0.2233,
+      "TPR": 0.8917,
+      "FN": 0.1083
+    },
+    {
+      "thr": 0.75,
+      "FP_benign": 0.1633,
+      "TPR": 0.8567,
+      "FN": 0.1433
+    },
+    {
+      "thr": 0.8,
+      "FP_benign": 0.0667,
+      "TPR": 0.7983,
+      "FN": 0.2017
+    },
+    {
+      "thr": 0.85,
+      "FP_benign": 0.0033,
+      "TPR": 0.6233,
+      "FN": 0.3767
+    },
+    {
+      "thr": 0.9,
+      "FP_benign": 0.0,
+      "TPR": 0.035,
+      "FN": 0.965
+    },
+    {
+      "thr": 0.95,
+      "FP_benign": 0.0,
+      "TPR": 0.0067,
+      "FN": 0.9933
+    }
+  ],
+  "local_slopes_per_0.05": {
+    "dFP": 0.06,
+    "dFN": 0.035,
+    "note": "raising thr by 0.05 cuts benign FP by dFP and costs dFN attack recall at the deployed point"
+  },
+  "recommended_point": {
+    "thr": 0.8,
+    "FP_benign": 0.0667,
+    "FN": 0.2017,
+    "rule": "balanced point: argmin(FP + FN)"
+  },
+  "validation_second_window": {
+    "n": 44,
+    "n_benign": 43,
+    "FP_0.5": 1.0,
+    "FP_0.7": 0.2558,
+    "attack_caught": "1/1",
+    "note": "disjoint capture window; trigger-rate magnitude transfers, exact value does not -> per-deployment recalibration needed"
+  },
+  "benign_score_summary": {
+    "min": 0.2965,
+    "median": 0.6309,
+    "max": 0.8578,
+    "frac_ge_0.5": 0.9567,
+    "frac_ge_0.7": 0.2233
+  }
+}
