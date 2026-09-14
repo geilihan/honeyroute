@@ -24,5 +24,126 @@
   "note": "Two independent, public distributions reproduce the routing conclusion: external benign instructions are diverted at 14.3% and public jailbreaks are detected at 99.6%. A fully independent production deployment is not available -> stated as a single-deployment limitation. External benign instructions over-flag at 0.5 (73.0%) far above the in-distribution benign rate (25.7%): the router over-scores terse instruction-style questions, consistent with the paper's 'instruction-style benign over-scores' caveat and motivating the per-deployment recalibration recipe.",
   "in_distribution_benign_flagged_at_0.5": 0.2565,
   "in_distribution_n_benign": 503,
-  "oods_gap_flagged_at_0.5": 0.4735
+  "oods_gap_flagged_at_0.5": 0.4735,
+  "recalibration_curve": [
+    {
+      "thr": 0.5,
+      "FP_benign": 1.0,
+      "FN_attack": 0.0
+    },
+    {
+      "thr": 0.6,
+      "FP_benign": 1.0,
+      "FN_attack": 0.0
+    },
+    {
+      "thr": 0.7,
+      "FP_benign": 0.9967,
+      "FN_attack": 0.0
+    },
+    {
+      "thr": 0.8,
+      "FP_benign": 0.9167,
+      "FN_attack": 0.0
+    },
+    {
+      "thr": 0.9,
+      "FP_benign": 0.75,
+      "FN_attack": 0.0
+    },
+    {
+      "thr": 1.0,
+      "FP_benign": 0.5133,
+      "FN_attack": 0.0
+    },
+    {
+      "thr": 1.1,
+      "FP_benign": 0.2933,
+      "FN_attack": 0.0
+    },
+    {
+      "thr": 1.2,
+      "FP_benign": 0.1433,
+      "FN_attack": 0.004
+    },
+    {
+      "thr": 1.3,
+      "FP_benign": 0.0567,
+      "FN_attack": 0.008
+    },
+    {
+      "thr": 1.4,
+      "FP_benign": 0.02,
+      "FN_attack": 0.016
+    },
+    {
+      "thr": 1.5,
+      "FP_benign": 0.0033,
+      "FN_attack": 0.032
+    },
+    {
+      "thr": 1.6,
+      "FP_benign": 0.0,
+      "FN_attack": 0.672
+    },
+    {
+      "thr": 1.7,
+      "FP_benign": 0.0,
+      "FN_attack": 1.0
+    },
+    {
+      "thr": 1.8,
+      "FP_benign": 0.0,
+      "FN_attack": 1.0
+    },
+    {
+      "thr": 1.9,
+      "FP_benign": 0.0,
+      "FN_attack": 1.0
+    },
+    {
+      "thr": 2.0,
+      "FP_benign": 0.0,
+      "FN_attack": 1.0
+    },
+    {
+      "thr": 2.1,
+      "FP_benign": 0.0,
+      "FN_attack": 1.0
+    },
+    {
+      "thr": 2.2,
+      "FP_benign": 0.0,
+      "FN_attack": 1.0
+    },
+    {
+      "thr": 2.3,
+      "FP_benign": 0.0,
+      "FN_attack": 1.0
+    },
+    {
+      "thr": 2.4,
+      "FP_benign": 0.0,
+      "FN_attack": 1.0
+    },
+    {
+      "thr": 2.5,
+      "FP_benign": 0.0,
+      "FN_attack": 1.0
+    }
+  ],
+  "recalibrated_operating_point": {
+    "rule": "smallest threshold with external benign FP <= 10% (as a deployer would pick on a local benign sample)",
+    "at": {
+      "thr": 1.3,
+      "FP_benign": 0.0567,
+      "FN_attack": 0.008
+    },
+    "default_thr_1.2": {
+      "thr": 1.2,
+      "FP_benign": 0.1433,
+      "FN_attack": 0.004
+    },
+    "note": "Applying the paper's own per-deployment recalibration recipe to the external distributions closes most of the gap: choosing the threshold on a local benign sample brings external benign FP to <=10% while external attack detection stays high --- the O7 gap is a calibration gap, not a capability gap."
+  }
 }

@@ -48,6 +48,7 @@ production token consumption under attack.
 | E7 adaptive v2: multi-teacher + session/account rotation (O2) | `run_b4_adaptive_v2.py` | `e7_evasion_adaptive_v2.json` |
 | Published strong-evasion baseline (O2) | `run_e1_strong_baseline.py` | `e1_strong_baseline.json` |
 | External-corpus generalization: dolly-15k benign + JBB attacks (O7) | `run_o7_external_generalization.py` | `o7_external_generalization.json` |
+| External-corpus recalibration curve (O7 ext) | `run_o7_external_calibration.py` | `o7_external_generalization.json` (recalibration_curve) |
 | E2 judge-order robustness (W6) | `run_e2_judge_robustness.py` | `e2_judge_robustness.json` |
 | E2b per-deployment threshold recipe (W7) | `run_e2b_threshold_recipe.py` | `e2b_threshold_recipe.json`, `e2b_benign_gate_scores.json` |
 | E1 black-box threshold estimation (W3a) | `run_w3_threshold_estimation.py` | `e1_threshold_estimation.json` |
