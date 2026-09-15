@@ -151,6 +151,8 @@ def main():
     chk("O2 v2 rotation evasion=0", get("e7_evasion_adaptive_v2.json", "aggregate/session_rotation_evasion/2"), 0.0, 0)
 
     # ---------- W3a / W3b (threshold estimation / white-box) ----------
+    chk("E1 detection AUROC=.9754", get("e1_detection.json", "pooled/auc"), 0.9754, 1e-3)
+    chk("E1 detection FPR@95TPR=0", get("e1_detection.json", "pooled/fpr@95tpr"), 0.0, 1e-6)
     chk("W3a intent-preserving evasion=0/40", get("e1_threshold_estimation.json", "n_intent_preserving_evasions"), 0, 0)
     chk("W3a queries to localise~9", get("e1_threshold_estimation.json", "mean_queries_to_localise"), 9.0, 0.1)
     chk("W3b eps.2 breaks 100%", get("e1_whitebox_probe.json", "success_rate_by_eps/0.2"), 1.0, 0)

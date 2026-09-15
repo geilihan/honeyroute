@@ -1,6 +1,6 @@
 {
-  "n": 90,
-  "pass": 90,
+  "n": 92,
+  "pass": 92,
   "fail": 0,
   "skip": 0,
   "checks": [
@@ -306,6 +306,18 @@
     },
     {
       "check": "O2 v2 rotation evasion=0",
+      "actual": 0.0,
+      "expected": 0.0,
+      "status": "PASS"
+    },
+    {
+      "check": "E1 detection AUROC=.9754",
+      "actual": 0.9754,
+      "expected": 0.9754,
+      "status": "PASS"
+    },
+    {
+      "check": "E1 detection FPR@95TPR=0",
       "actual": 0.0,
       "expected": 0.0,
       "status": "PASS"
