@@ -63,6 +63,9 @@ production token consumption under attack.
 
 Utilities shipped alongside the reproduction path (not paper experiments): `remote_run.py` + `_ssh.py` (upload/execute a script inside the guard container and pull its result JSON) and `sg_debug.py` / `sg_debug2.py` (ad-hoc ShieldGemma probe scratch).
 
+`results/` additionally retains intermediate / partial JSONs from the experiment runs (`*_partial*.json`, attribution and loop intermediates, multi-teacher partials) for transparency; the paper's numbers come from the files listed in the table above.
+
+
 
 Attack corpora: `results/jbb_attacks_uniq.json` (496 unique
 JailbreakBench prompts), `results/crescendo_playbooks.json` (verbatim
