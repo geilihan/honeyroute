@@ -160,6 +160,9 @@ def main():
     chk("E8 text attack evasion=.725", get("e8_whitebox_text_gate.json", "evasion_rate_all"), 0.725, 5e-3)
     chk("E8 base margin=1.5522", get("e8_whitebox_text_gate.json", "baseline_mean_margin"), 1.5522, 5e-3)
     chk("E8 suffix margin=0.9126", get("e8_whitebox_text_gate.json", "mean_margin_suffix"), 0.9126, 5e-3)
+    chk("E8b transfer evasion=.20", get("e8b_transfer_gate.json", "evasion_rate_all"), 0.2, 5e-3)
+    chk("E8b surrogate acc=.9959", get("e8b_transfer.json", "surrogate/train_acc"), 0.9959, 1e-3)
+    chk("E8b objective evasion=.975", get("e8b_transfer.json", "evasion_rate_objective"), 0.975, 5e-3)
     e9row = {r["mode"] + ":" + str(r["rate"]): r for r in (get("e9_l3_defense.json", "sweep") or [])}
     chk("E9 plain evasion=.725", (e9row.get("plain:0.0") or {}).get("attack_evasion"), 0.725, 5e-3)
     chk("E9 plain benign FP=.19", (e9row.get("plain:0.0") or {}).get("benign_fp"), 0.19, 5e-3)

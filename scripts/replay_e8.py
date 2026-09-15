@@ -76,7 +76,9 @@ def judge(text, key):
 
 
 def main():
-    src = json.load(open(os.path.join(RES, "e8_whitebox_text.json"), encoding="utf-8"))
+    IN = os.environ.get("E8_IN", "e8_whitebox_text.json")
+    ON = os.environ.get("E8_OUTJSON", "e8_whitebox_text_gate.json")
+    src = json.load(open(os.path.join(RES, IN), encoding="utf-8"))
     key = _teacher_key()
     recs = src["records"]
     out = []
@@ -135,7 +137,8 @@ def main():
             sum(r["gate_evaded"] for r in harmful) / max(len(harmful), 1), 4),
         "records": out,
     }
-    json.dump(res, open(os.path.join(RES, "e8_whitebox_text_gate.json"), "w"),
+    res["source_json"] = IN
+    json.dump(res, open(os.path.join(RES, ON), "w"),
               ensure_ascii=False, indent=2)
     print("DONE", json.dumps({k: res[k] for k in
           ("n", "n_intent_preserved", "n_defanged", "n_judge_unknown",

@@ -1,6 +1,6 @@
 {
-  "n": 87,
-  "pass": 87,
+  "n": 90,
+  "pass": 90,
   "fail": 0,
   "skip": 0,
   "checks": [
@@ -350,6 +350,24 @@
       "check": "E8 suffix margin=0.9126",
       "actual": 0.9126,
       "expected": 0.9126,
+      "status": "PASS"
+    },
+    {
+      "check": "E8b transfer evasion=.20",
+      "actual": 0.2,
+      "expected": 0.2,
+      "status": "PASS"
+    },
+    {
+      "check": "E8b surrogate acc=.9959",
+      "actual": 0.9959,
+      "expected": 0.9959,
+      "status": "PASS"
+    },
+    {
+      "check": "E8b objective evasion=.975",
+      "actual": 0.975,
+      "expected": 0.975,
       "status": "PASS"
     },
     {

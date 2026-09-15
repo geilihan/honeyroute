@@ -171,15 +171,17 @@ def main():
         text_ev = e8.get("evasion_rate_all")
         levels.append({
             "level": "L3",
-            "capability": "white-box gradients through the publicly released backbone "
-                          "(text-realisable GCG on the router score; embedding-space "
-                          "PGD reported as a non-text upper bound)",
+            "capability": "white-box: full model internals (public backbone + the "
+                          "per-deployment heads); text-realisable GCG on the router "
+                          "score, with the embedding-space PGD perturbation reported "
+                          "as a non-text upper bound",
             "source": "e8_whitebox_text_gate.json + e1_whitebox_probe.json",
             "n": int(e8.get("n") or w3b.get("n_attacks", 0)),
             "detection": round(1 - text_ev, 4) if text_ev is not None else 0.0,
             "evasion": text_ev if text_ev is not None else 1.0,
             "evasion_text_realisable": text_ev,
             "evasion_intent_preserved": e8.get("evasion_rate_intent_preserved"),
+            "evasion_transfer_public_backbone": (load("e8b_transfer_gate.json") or {}).get("evasion_rate_all"),
             "evasion_embedding_upper_bound": 1.0,
             "defense_input_smoothing": e9.get("sweep"),
             "cost_queries": None,

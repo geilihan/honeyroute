@@ -65,13 +65,14 @@
     },
     {
       "level": "L3",
-      "capability": "white-box gradients through the publicly released backbone (text-realisable GCG on the router score; embedding-space PGD reported as a non-text upper bound)",
+      "capability": "white-box: full model internals (public backbone + the per-deployment heads); text-realisable GCG on the router score, with the embedding-space PGD perturbation reported as a non-text upper bound",
       "source": "e8_whitebox_text_gate.json + e1_whitebox_probe.json",
       "n": 40,
       "detection": 0.275,
       "evasion": 0.725,
       "evasion_text_realisable": 0.725,
       "evasion_intent_preserved": 0.6786,
+      "evasion_transfer_public_backbone": 0.2,
       "evasion_embedding_upper_bound": 1.0,
       "defense_input_smoothing": [
         {
