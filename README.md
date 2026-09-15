@@ -44,6 +44,8 @@ production token consumption under attack.
 | E7 rule-aware evasion | `run_b4_evasion.py` | `e7_evasion_robustness.json`, `b4_evasion_summary.json` |
 | E1 zh benign calibration (W1) | `run_zh_calibration.py`, `dedup_e1_set.py` | `e1_zh_calibration.json` (calibrated branch also in `e1_expanded_eval_v2.json`) |
 | E7 adaptive API-black-box evasion (W2) | `run_b4_adaptive.py` | `e7_evasion_adaptive.json` |
+| E8 text-realisable white-box attack | `run_e8_whitebox_text.py` (+ `replay_e8.py`) | `e8_whitebox_text.json`, `e8_whitebox_text_gate.json` |
+| E9 input-smoothing defense (D1) | `run_e9_l3_defense.py` | `e9_l3_defense.json` |
 | Attacker-cost frontier (O1) | `agg_attacker_cost.py`, `plot_attacker_cost.py` | `attacker_cost_frontier.json` |
 | E7 adaptive v2: multi-teacher + session/account rotation (O2) | `run_b4_adaptive_v2.py` | `e7_evasion_adaptive_v2.json` |
 | Published strong-evasion baseline (O2) | `run_e1_strong_baseline.py` | `e1_strong_baseline.json` |

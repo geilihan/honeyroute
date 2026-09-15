@@ -29,7 +29,23 @@ from transformers import AutoModel, AutoTokenizer        # noqa: E402
 
 OUT = os.environ.get("HONEYROUTE_OUT", "/datagroup/guard/eval/honeyroute")
 BB = "/datagroup/guard/SingGuard-NSFA-0.8B"
-HEADS = os.environ.get("W3B_HEADS", "/datagroup/guard/runs/heads/2026-09-14")
+
+
+def _resolve_heads():
+    base = os.environ.get("W3B_HEADS", "/datagroup/guard/runs/heads")
+    v = os.environ.get("W3B_HEAD_VERSION")
+    vf = os.environ.get("W3B_VERSION_FILE", "/datagroup/guard/deploy/current_version")
+    if not v and os.path.exists(vf):
+        try:
+            v = open(vf).read().strip()
+        except OSError:
+            v = None
+    if v and os.path.isdir(os.path.join(base, v)):
+        return os.path.join(base, v), v
+    return base, os.path.basename(base.rstrip("/"))
+
+
+HEADS, HEAD_VERSION = _resolve_heads()
 DEV = "cuda:0"
 N = int(os.environ.get("W3B_N", "40"))
 EPS = [0.05, 0.1, 0.2, 0.5, 1.0, 2.0]
@@ -110,7 +126,7 @@ def main():
         "experiment": "e1_whitebox_probe",
         "capability": "white-box: gradients through the frozen 0.8B backbone + heads; "
                       "embedding-space PGD minimising max_risk",
-        "heads_dir": HEADS, "n_attacks": n, "threshold": TAU,
+        "heads_dir": "REDACTED_HEADS_DIR", "head_version": HEAD_VERSION, "n_attacks": n, "threshold": TAU,
         "eps_grid_relative_L2": EPS,
         "baseline_mean_max_risk": base_mean,
         "success_rate_by_eps": {k: round(v / max(n, 1), 4) for k, v in succ.items()},

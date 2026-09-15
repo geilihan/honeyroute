@@ -158,24 +158,35 @@ def main():
     except Exception as exc:  # pragma: no cover
         print("PUB skipped:", exc)
 
-    # ---- L3: white-box gradients (W3b) ----
+    # ---- L3: white-box ----
+    #   * embedding-space PGD  = NON-text upper bound (e1_whitebox_probe.json)
+    #   * text-realisable GCG  = the deployable attack (e8_whitebox_text_gate.json)
+    #   * D1 input smoothing    = cheap mitigation (e9_l3_defense.json)
     try:
-        w3b = load("e1_whitebox_probe.json")
+        w3b = load("e1_whitebox_probe.json") or {}
         grid = w3b.get("success_rate_by_eps", {})
-        # cheapest budget at which every attack crosses the threshold
         fully = sorted(float(e) for e, s in grid.items() if float(s) >= 1.0)
+        e8 = load("e8_whitebox_text_gate.json") or load("e8_whitebox_text.json") or {}
+        e9 = load("e9_l3_defense.json") or {}
+        text_ev = e8.get("evasion_rate_all")
         levels.append({
             "level": "L3",
-            "capability": "white-box gradients through the publicly released backbone (embedding-space PGD)",
-            "source": "e1_whitebox_probe.json",
-            "n": int(w3b.get("n_attacks", 0)),
-            "detection": 0.0,
-            "evasion": 1.0,
+            "capability": "white-box gradients through the publicly released backbone "
+                          "(text-realisable GCG on the router score; embedding-space "
+                          "PGD reported as a non-text upper bound)",
+            "source": "e8_whitebox_text_gate.json + e1_whitebox_probe.json",
+            "n": int(e8.get("n") or w3b.get("n_attacks", 0)),
+            "detection": round(1 - text_ev, 4) if text_ev is not None else 0.0,
+            "evasion": text_ev if text_ev is not None else 1.0,
+            "evasion_text_realisable": text_ev,
+            "evasion_intent_preserved": e8.get("evasion_rate_intent_preserved"),
+            "evasion_embedding_upper_bound": 1.0,
+            "defense_input_smoothing": e9.get("sweep"),
             "cost_queries": None,
             "l2_budget_full_break": fully[0] if fully else None,
             "mean_min_eps": w3b.get("mean_min_eps_success"),
             "baseline_max_risk": w3b.get("baseline_mean_max_risk"),
-            "text_realisable": False,
+            "text_realisable": True,
         })
     except Exception as exc:  # pragma: no cover
         print("L3 skipped:", exc)
@@ -187,15 +198,17 @@ def main():
             "Evasion rate as a function of attacker capability and cost, aggregated "
             "from the released adversarial-probing result JSONs. The frontier's "
             "finding: across every API-visible level (L1/L2a/L2b/L2c) evasion stays "
-            "<3%, while the only level that succeeds is L3 (white-box), which is "
-            "measured but not defended and whose perturbation is not realisable as "
-            "text."
+            "<3%, so the defense boundary sits at model-internals access. At L3 the "
+            "white-box adversary succeeds: a text-realisable token-level attack "
+            "(GCG on the router score) evades a fraction of prompts, and the "
+            "embedding-space PGD perturbation is reported as a non-text upper bound; "
+            "a cheap input-smoothing defense reduces the text attack (E9)."
         ),
         "levels": levels,
         "summary": {
             "max_evasion_api_only": max(l12) if l12 else None,
             "only_successful_level": "L3",
-            "successful_level_text_realisable": False,
+            "successful_level_text_realisable": True,
         },
     }
     dst = os.path.join(RES, "attacker_cost_frontier.json")

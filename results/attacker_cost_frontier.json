@@ -1,6 +1,6 @@
 {
   "experiment": "attacker_cost_frontier",
-  "description": "Evasion rate as a function of attacker capability and cost, aggregated from the released adversarial-probing result JSONs. The frontier's finding: across every API-visible level (L1/L2a/L2b/L2c) evasion stays <3%, while the only level that succeeds is L3 (white-box), which is measured but not defended and whose perturbation is not realisable as text.",
+  "description": "Evasion rate as a function of attacker capability and cost, aggregated from the released adversarial-probing result JSONs. The frontier's finding: across every API-visible level (L1/L2a/L2b/L2c) evasion stays <3%, so the defense boundary sits at model-internals access. At L3 the white-box adversary succeeds: a text-realisable token-level attack (GCG on the router score) evades a fraction of prompts, and the embedding-space PGD perturbation is reported as a non-text upper bound; a cheap input-smoothing defense reduces the text attack (E9).",
   "levels": [
     {
       "level": "L1",
@@ -65,21 +65,66 @@
     },
     {
       "level": "L3",
-      "capability": "white-box gradients through the publicly released backbone (embedding-space PGD)",
-      "source": "e1_whitebox_probe.json",
+      "capability": "white-box gradients through the publicly released backbone (text-realisable GCG on the router score; embedding-space PGD reported as a non-text upper bound)",
+      "source": "e8_whitebox_text_gate.json + e1_whitebox_probe.json",
       "n": 40,
-      "detection": 0.0,
-      "evasion": 1.0,
+      "detection": 0.275,
+      "evasion": 0.725,
+      "evasion_text_realisable": 0.725,
+      "evasion_intent_preserved": 0.6786,
+      "evasion_embedding_upper_bound": 1.0,
+      "defense_input_smoothing": [
+        {
+          "mode": "plain",
+          "rate": 0.0,
+          "benign_fp": 0.19,
+          "attack_evasion": 0.725,
+          "benign_median_margin": 0.9328,
+          "attack_median_margin": 0.8995,
+          "latency_ms_per_benign": 53.04,
+          "latency_ms_per_attack": 48.79
+        },
+        {
+          "mode": "word",
+          "rate": 0.1,
+          "benign_fp": 0.32,
+          "attack_evasion": 0.625,
+          "benign_median_margin": 0.9598,
+          "attack_median_margin": 0.9502,
+          "latency_ms_per_benign": 305.26,
+          "latency_ms_per_attack": 338.55
+        },
+        {
+          "mode": "token",
+          "rate": 0.1,
+          "benign_fp": 0.45,
+          "attack_evasion": 0.475,
+          "benign_median_margin": 0.989,
+          "attack_median_margin": 1.0121,
+          "latency_ms_per_benign": 299.23,
+          "latency_ms_per_attack": 313.66
+        },
+        {
+          "mode": "token",
+          "rate": 0.3,
+          "benign_fp": 0.795,
+          "attack_evasion": 0.05,
+          "benign_median_margin": 1.1813,
+          "attack_median_margin": 1.1945,
+          "latency_ms_per_benign": 301.46,
+          "latency_ms_per_attack": 309.59
+        }
+      ],
       "cost_queries": null,
       "l2_budget_full_break": 0.2,
-      "mean_min_eps": 0.139,
+      "mean_min_eps": 0.188,
       "baseline_max_risk": 0.8537,
-      "text_realisable": false
+      "text_realisable": true
     }
   ],
   "summary": {
     "max_evasion_api_only": 0.0278,
     "only_successful_level": "L3",
-    "successful_level_text_realisable": false
+    "successful_level_text_realisable": true
   }
 }

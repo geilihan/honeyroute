@@ -1,0 +1,58 @@
+{
+  "experiment": "e9_l3_defense",
+  "defense": "D1 randomised input smoothing (token/word delete-dup-swap), median margin",
+  "head_version": "2026-09-15",
+  "config": {
+    "K": 8,
+    "n_benign": 200,
+    "n_attack": 40,
+    "threshold_margin": 1.0,
+    "seed": 20260915
+  },
+  "sweep": [
+    {
+      "mode": "plain",
+      "rate": 0.0,
+      "benign_fp": 0.19,
+      "attack_evasion": 0.725,
+      "benign_median_margin": 0.9328,
+      "attack_median_margin": 0.8995,
+      "latency_ms_per_benign": 53.04,
+      "latency_ms_per_attack": 48.79
+    },
+    {
+      "mode": "word",
+      "rate": 0.1,
+      "benign_fp": 0.32,
+      "attack_evasion": 0.625,
+      "benign_median_margin": 0.9598,
+      "attack_median_margin": 0.9502,
+      "latency_ms_per_benign": 305.26,
+      "latency_ms_per_attack": 338.55
+    },
+    {
+      "mode": "token",
+      "rate": 0.1,
+      "benign_fp": 0.45,
+      "attack_evasion": 0.475,
+      "benign_median_margin": 0.989,
+      "attack_median_margin": 1.0121,
+      "latency_ms_per_benign": 299.23,
+      "latency_ms_per_attack": 313.66
+    },
+    {
+      "mode": "token",
+      "rate": 0.3,
+      "benign_fp": 0.795,
+      "attack_evasion": 0.05,
+      "benign_median_margin": 1.1813,
+      "attack_median_margin": 1.1945,
+      "latency_ms_per_benign": 301.46,
+      "latency_ms_per_attack": 309.59
+    }
+  ],
+  "plain_benign_fp": 0.19,
+  "plain_attack_evasion": 0.725,
+  "latency_ms_plain": 53.04,
+  "note": "Non-adaptive attack (suffixes optimised against the plain classifier). benign_fp = benign fraction flagged (lower better); attack_evasion = attack fraction with margin < threshold (lower better for the defender). If suppressing the attack costs proportionally more benign FP, smoothing only shifts the operating point -- a principled defense is the journal extension."
+}

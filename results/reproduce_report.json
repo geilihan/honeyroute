@@ -1,6 +1,6 @@
 {
-  "n": 79,
-  "pass": 79,
+  "n": 87,
+  "pass": 87,
   "fail": 0,
   "skip": 0,
   "checks": [
@@ -332,6 +332,54 @@
       "check": "W3b baseline max_risk=.85",
       "actual": 0.8537,
       "expected": 0.85,
+      "status": "PASS"
+    },
+    {
+      "check": "E8 text attack evasion=.725",
+      "actual": 0.725,
+      "expected": 0.725,
+      "status": "PASS"
+    },
+    {
+      "check": "E8 base margin=1.5522",
+      "actual": 1.5522,
+      "expected": 1.5522,
+      "status": "PASS"
+    },
+    {
+      "check": "E8 suffix margin=0.9126",
+      "actual": 0.9126,
+      "expected": 0.9126,
+      "status": "PASS"
+    },
+    {
+      "check": "E9 plain evasion=.725",
+      "actual": 0.725,
+      "expected": 0.725,
+      "status": "PASS"
+    },
+    {
+      "check": "E9 plain benign FP=.19",
+      "actual": 0.19,
+      "expected": 0.19,
+      "status": "PASS"
+    },
+    {
+      "check": "E9 token0.1 evasion=.475",
+      "actual": 0.475,
+      "expected": 0.475,
+      "status": "PASS"
+    },
+    {
+      "check": "E9 token0.1 benign FP=.45",
+      "actual": 0.45,
+      "expected": 0.45,
+      "status": "PASS"
+    },
+    {
+      "check": "O1 L3 text-realisable",
+      "actual": true,
+      "expected": true,
       "status": "PASS"
     },
     {

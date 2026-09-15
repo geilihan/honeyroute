@@ -156,6 +156,17 @@ def main():
     chk("W3b eps.2 breaks 100%", get("e1_whitebox_probe.json", "success_rate_by_eps/0.2"), 1.0, 0)
     chk("W3b baseline max_risk=.85", get("e1_whitebox_probe.json", "baseline_mean_max_risk"), 0.85, 5e-3)
 
+    # ---------- E8 / E9: text-realisable white-box attack + D1 defense ----------
+    chk("E8 text attack evasion=.725", get("e8_whitebox_text_gate.json", "evasion_rate_all"), 0.725, 5e-3)
+    chk("E8 base margin=1.5522", get("e8_whitebox_text_gate.json", "baseline_mean_margin"), 1.5522, 5e-3)
+    chk("E8 suffix margin=0.9126", get("e8_whitebox_text_gate.json", "mean_margin_suffix"), 0.9126, 5e-3)
+    e9row = {r["mode"] + ":" + str(r["rate"]): r for r in (get("e9_l3_defense.json", "sweep") or [])}
+    chk("E9 plain evasion=.725", (e9row.get("plain:0.0") or {}).get("attack_evasion"), 0.725, 5e-3)
+    chk("E9 plain benign FP=.19", (e9row.get("plain:0.0") or {}).get("benign_fp"), 0.19, 5e-3)
+    chk("E9 token0.1 evasion=.475", (e9row.get("token:0.1") or {}).get("attack_evasion"), 0.475, 5e-3)
+    chk("E9 token0.1 benign FP=.45", (e9row.get("token:0.1") or {}).get("benign_fp"), 0.45, 5e-3)
+    chk("O1 L3 text-realisable", get("attacker_cost_frontier.json", "summary/successful_level_text_realisable"), True, 0)
+
     # ---------- W4: extraction probe ----------
     chk("W4 extraction min acc=99.17%", get("e6_extraction_probe.json", "min_accuracy"), 0.9917, 1e-3)
 
