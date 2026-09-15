@@ -46,6 +46,7 @@ production token consumption under attack.
 | E7 adaptive API-black-box evasion (W2) | `run_b4_adaptive.py` | `e7_evasion_adaptive.json` |
 | E8 text-realisable white-box attack | `run_e8_whitebox_text.py` (+ `replay_e8.py`) | `e8_whitebox_text.json`, `e8_whitebox_text_gate.json` |
 | E8b public-backbone-only transfer | `run_e8_whitebox_text.py` (E8_TARGET=surrogate) | `e8b_transfer.json`, `e8b_transfer_gate.json` |
+| Public benign corpus for the surrogate (E8b) | (input data) | `dolly_benign.json` (databricks-dolly-15k sample) |
 | E9 input-smoothing defense (D1) | `run_e9_l3_defense.py` | `e9_l3_defense.json` |
 | Attacker-cost frontier (O1) | `agg_attacker_cost.py`, `plot_attacker_cost.py` | `attacker_cost_frontier.json` |
 | E7 adaptive v2: multi-teacher + session/account rotation (O2) | `run_b4_adaptive_v2.py` | `e7_evasion_adaptive_v2.json` |
