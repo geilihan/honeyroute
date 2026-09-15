@@ -1,6 +1,6 @@
 {
-  "n": 69,
-  "pass": 69,
+  "n": 79,
+  "pass": 79,
   "fail": 0,
   "skip": 0,
   "checks": [
@@ -77,6 +77,30 @@
       "status": "PASS"
     },
     {
+      "check": "E1 cascade L2 invocation=.56",
+      "actual": 0.5631,
+      "expected": 0.5631,
+      "status": "PASS"
+    },
+    {
+      "check": "E1 router misses=12",
+      "actual": 12,
+      "expected": 12,
+      "status": "PASS"
+    },
+    {
+      "check": "E1 LG4 misses=47",
+      "actual": 47,
+      "expected": 47,
+      "status": "PASS"
+    },
+    {
+      "check": "E1 miss overlap=8",
+      "actual": 8,
+      "expected": 8,
+      "status": "PASS"
+    },
+    {
       "check": "W1 tau_zh=0.5779",
       "actual": 0.5779,
       "expected": 0.5779,
@@ -128,6 +152,36 @@
       "check": "E2 hpC cross-family kappa=.24",
       "actual": 0.2356,
       "expected": 0.2356,
+      "status": "PASS"
+    },
+    {
+      "check": "E2 hpT raw F=.930 (264/284)",
+      "actual": 0.9296,
+      "expected": 0.9296,
+      "status": "PASS"
+    },
+    {
+      "check": "E2 hpT n_valid=284",
+      "actual": 284,
+      "expected": 284,
+      "status": "PASS"
+    },
+    {
+      "check": "E2 hpC raw F=.076 (19/249)",
+      "actual": 0.0763,
+      "expected": 0.0763,
+      "status": "PASS"
+    },
+    {
+      "check": "E2 hpC n_valid=249",
+      "actual": 249,
+      "expected": 249,
+      "status": "PASS"
+    },
+    {
+      "check": "E2b selective n_valid=252",
+      "actual": 252,
+      "expected": 252,
       "status": "PASS"
     },
     {
@@ -194,6 +248,12 @@
       "check": "E6 flood diversion=1.0",
       "actual": 1.0,
       "expected": 1.0,
+      "status": "PASS"
+    },
+    {
+      "check": "E6 benign diverted=93",
+      "actual": 93,
+      "expected": 93,
       "status": "PASS"
     },
     {

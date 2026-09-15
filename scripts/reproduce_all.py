@@ -16,7 +16,22 @@ needs the gateway / models.)
 import json, os, sys
 
 HERE = os.path.dirname(os.path.abspath(__file__))
-RES = os.path.join(HERE, "..", "_results")
+
+
+def _find_results_dir():
+    # The data dir sits next to this script's parent. In the paper tree it is
+    # `_results/`; in the released artifact repos it is `results/`. Accept both
+    # (and a same-dir fallback) so one command works in every checkout layout.
+    for cand in (os.path.join(HERE, "..", "_results"),
+                 os.path.join(HERE, "..", "results"),
+                 os.path.join(HERE, "_results"),
+                 os.path.join(HERE, "results")):
+        if os.path.isdir(cand):
+            return os.path.abspath(cand)
+    return os.path.abspath(os.path.join(HERE, "..", "_results"))
+
+
+RES = _find_results_dir()
 _cache = {}
 
 

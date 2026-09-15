@@ -14,7 +14,16 @@ matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 
 HERE = os.path.dirname(os.path.abspath(__file__))
-RES = os.path.join(HERE, "..", "_results")
+def _find_results_dir():
+    for c in (os.environ.get("HONEYROUTE_OUT"),
+              os.path.join(HERE, "_results"), os.path.join(HERE, "..", "_results"),
+              os.path.join(HERE, "..", "results"), os.path.join(HERE, "results")):
+        if c and os.path.isdir(c):
+            return os.path.abspath(c)
+    return os.path.abspath(os.path.join(HERE, "..", "_results"))
+
+
+RES = _find_results_dir()
 
 
 def main(outdirs):

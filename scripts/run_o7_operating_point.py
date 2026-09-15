@@ -24,7 +24,16 @@ os.environ["no_proxy"] = os.environ["NO_PROXY"] = "*"
 _OPENER = urllib.request.build_opener(urllib.request.ProxyHandler({}))
 
 HERE = os.path.dirname(os.path.abspath(__file__))
-RES = os.path.join(HERE, "..", "_results")
+def _find_results_dir():
+    for c in (os.environ.get("HONEYROUTE_OUT"),
+              os.path.join(HERE, "_results"), os.path.join(HERE, "..", "_results"),
+              os.path.join(HERE, "..", "results"), os.path.join(HERE, "results")):
+        if c and os.path.isdir(c):
+            return os.path.abspath(c)
+    return os.path.abspath(os.path.join(HERE, "..", "_results"))
+
+
+RES = _find_results_dir()
 GATE = os.environ.get("W2_GATE", "http://127.0.0.1:8002/gate")
 DOLLY = os.environ.get("O7_DOLLY", "E:/ml/honeyroute/_scratch/dolly.jsonl")
 N = int(os.environ.get("O7_N", "300"))
