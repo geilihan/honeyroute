@@ -61,6 +61,9 @@ production token consumption under attack.
 | E6 budget-limited extraction probe (W4) | `run_e6_extraction_probe.py` | `e6_extraction_probe.json` |
 | E1 white-box gradient probe (W3b) | `run_e1_whitebox_probe.py` | `e1_whitebox_probe.json` |
 
+Utilities shipped alongside the reproduction path (not paper experiments): `remote_run.py` + `_ssh.py` (upload/execute a script inside the guard container and pull its result JSON) and `sg_debug.py` / `sg_debug2.py` (ad-hoc ShieldGemma probe scratch).
+
+
 Attack corpora: `results/jbb_attacks_uniq.json` (496 unique
 JailbreakBench prompts), `results/crescendo_playbooks.json` (verbatim
 Crescendo turns from PyRIT), `results/e7_adv_scripts.json` and
